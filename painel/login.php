@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php echo $password_error; ?>
           </div>
         </div>
-        <button class="bg-[#006B94] hover:bg-[#006a94c9] transition-all delay-75 text-white rounded p-4 uppercase font-bold" type="submit">Entrar</button>
+        <button class="bg-primary hover:bg-primary-alt transition-all delay-75 text-white rounded-full p-4 uppercase font-bold" type="submit">Entrar</button>
       </form>
     </div>
   </div>
