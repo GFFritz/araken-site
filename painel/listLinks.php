@@ -20,9 +20,9 @@
         echo "<tr class='odd:bg-slate-100'>";
         echo "<td class='border-b border-r text-center p-1'>" . $row['name'] . "</td>";
         echo "<td class='border-b border-r text-center p-1'>" . $row['url'] . "</td>";
-        echo "<td class='border-b border-r text-center p-1 flex justify-around'>";
-        echo "<a class='border border-solid border-zinc-400 rounded w-6 h-6 bg-amber-600 hover:bg-amber-500 float-left text-white text-xs flex justify-center items-center' title='Editar Link'><i class='fa fa-edit' href='javascript:void(0)' onclick='openModal(" . $row['id'] . ")'></i></a>";
-        echo "<a class='border border-solid border-zinc-400 rounded w-6 h-6 bg-red-600 hover:bg-red-500 float-left text-white text-xs flex justify-center items-center' title='Remover Link' href='deleteLink.php?id=" . $row['id'] . "' onclick='return confirmDelete()'><i class='fa fa-trash'></i></a>";
+        echo "<td class='border-b border-r text-center p-1 flex justify-around gap-1'>";
+        echo "<a class='border border-solid border-zinc-400 rounded w-6 h-6 bg-yellow-500 hover:bg-yellow-400 float-left text-white text-xs flex justify-center items-center cursor-pointer' title='Editar Link'><i class='fa fa-edit' href='javascript:void(0)' onclick='openModal(" . $row['id'] . ")'></i></a>";
+        echo "<a class='border border-solid border-zinc-400 rounded w-6 h-6 bg-red-600 hover:bg-red-500 float-left text-white text-xs flex justify-center items-center cursor-pointer' title='Remover Link' href='deleteLink.php?id=" . $row['id'] . "' onclick='return confirmDelete()'><i class='fa fa-trash'></i></a>";
         echo "</td>";
         echo "</tr>";
       }
@@ -30,15 +30,13 @@
       echo "<tr><td colspan='4'>Nenhum registro encontrado.</td></tr>";
     }
 
-    // Fechar a conexão com o banco de dados
-    $database->closeConnection();
     ?>
   </table>
 
   <div id="editLinkModal" class="fixed hidden z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4 ">
     <div class="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md p-5">
       <div class="flex justify-between items-center border-b border-[#CAD1E1]">
-        <h2 class="text-lg font-medium">Editar Usuário</h2>
+        <h2 class="text-lg font-medium">Editar Link</h2>
         <span class="text-[#aaa] float-right text-[28px] font-bold hover:text-black hover:cursor-pointer" onclick="closeModal()">&times;</span>
       </div>
       <form id="editLinkForm" action="../src/helpers/editLink.php" method="post" class="flex flex-col gap-6 mt-6">
