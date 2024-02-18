@@ -26,12 +26,13 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 <body class="overflow-hidden font-montserrat">
   <?php
   require_once('header.php');
+  require_once('listConfigs.php');
   require_once('changePassword.php');
   ?>
 
   <div class="container flex flex-col justify-center items-center">
     <?php require_once('newLink.php'); ?>
-    <button class="bg-primary hover:bg-primary-alt text-zinc-50 flex gap-3 justify-center items-center w-fit rounded-full px-6 py-1" onclick="openModalNewLink('modelNewLink')">
+    <button class="bg-emerald-600 hover:bg-emerald-500 text-zinc-50 flex gap-3 justify-center items-center w-fit rounded-full px-6 py-1" onclick="openModalNewLink('modelNewLink')">
       <i class="fa fa-plus"></i>
       <span>Adicionar novo link</span>
     </button>
