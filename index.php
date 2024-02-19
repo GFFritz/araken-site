@@ -90,6 +90,9 @@
 
   </div>
 </main>
-
+<script>
+  // Estilizando a saída no console
+  console.log('%cDesenvolvido por Gabriel Fritz:', 'color: #4755ed; font-size: 20px; font-weight: bold;', 'https://github.com/GFFritz');
+</script>
 
 <?php require_once('src/partials/footer.php'); ?>
