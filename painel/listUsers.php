@@ -19,6 +19,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   <title>Painel - Araken Santos</title>
   <link rel="stylesheet" href='../assets/css/style.css'>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.1/dist/cdn.min.js"></script>
 </head>
 
@@ -28,8 +29,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
     <div class="flex justify-between">
       <div class="text-[20px] font-semibold">Usuários</div>
-      <button onclick="openCreateUserModal()" class="bg-[#006B94] hover:bg-[#006a94c9] transition-all delay-75 text-white rounded py-2 px-6 uppercase font-bold text-[14px] flex gap-3 items-center justify-center">
-        <img class='h-[16px]' src='../assets/img/add-user.svg' /> Novo Usuário
+      <button onclick="openCreateUserModal()" class="bg-primary hover:bg-primary-alt transition-all delay-75 text-white rounded py-2 px-6 uppercase font-bold text-[14px] flex gap-3 items-center justify-center">
+        <i class='fa fa-user-plus'></i> Novo Usuário
       </button>
     </div>
     <div class="inline-block rounded-lg border shadow-md">
@@ -38,7 +39,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           <tr>
             <th class="border-b border-r p-1">ID</th>
             <th class="border-b border-r p-1">Login</th>
-            <th class="border-b border-r p-1">Nível de acesso</th>
             <th class="border-b border-r p-1">Ações</th>
           </tr>
         </thead>
@@ -58,17 +58,16 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
               echo "<span class='text-zinc-400'> (Você)</span>";
             }
             echo "</td>";
-            echo "<td class='border-b border-r text-center p-1'>" . ($userData['access_level'] == 1 ? 'Associado' : 'Admin') . "</td>";
             echo "<td class='border-b border-r text-center p-1'>";
             echo "<div class='flex justify-around'>";
             if ($isYou) {
-              echo "<a class='border border-solid border-zinc-400 rounded p-1 bg-[#006B94] hover:bg-[#006a94c9] float-left' title='Editar usuário' href='javascript:void(0)' onclick='openModalUser(" . $userData['id'] . ")'>";
-              echo "<img class='h-[14px]' src='../assets/img/edit.svg' />";
+              echo "<a class='border border-solid border-zinc-400 rounded p-1 bg-primary hover:bg-primary-alt float-left' title='Editar usuário' href='javascript:void(0)' onclick='openModalUser(" . $userData['id'] . ")'>";
+              echo "<i class='fa fa-edit'></i>";
               echo "</a>";
               echo "<a class='border border-solid border-zinc-400 rounded p-1 bg-red-500 hover:bg-red-600' title='Apagar usuário' href='deleteUser.php?id=" . $userData['id'] . "' onclick='return confirmDelete()'>";
-              echo "<img class='h-[14px]' src='../assets/img/delete.svg' /></a>";
+              echo "<i class='fa fa-trash'></i>";
             } else {
-              echo "<div>/</div>";
+              echo "<div class='text-zinc-400'>Ações indisponíveis</div>";
             }
             echo "</div>";
             echo "</td>";
@@ -100,7 +99,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           </select>
         </div>
         <div>
-          <button type="submit" class="bg-[#006B94] hover:bg-[#006a94c9] w-full transition-all delay-75 text-white rounded p-4 uppercase font-bold">Atualizar</button>
+          <button type="submit" class="bg-primary hover:bg-primary-alt w-full transition-all delay-75 text-white rounded p-4 uppercase font-bold">Atualizar</button>
         </div>
       </form>
     </div>
@@ -129,7 +128,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           </select>
         </div>
         <div>
-          <button type="submit" class="bg-[#006B94] hover:bg-[#006a94c9] w-full transition-all delay-75 text-white rounded p-4 uppercase font-bold">Cadastrar</button>
+          <button type="submit" class="bg-primary hover:bg-primary-alt w-full transition-all delay-75 text-white rounded p-4 uppercase font-bold">Cadastrar</button>
         </div>
       </form>
     </div>

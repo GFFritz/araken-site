@@ -26,7 +26,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 <body class="font-montserrat">
   <?php
   require_once('header.php');
-  require_once('listConfigs.php');
   require_once('changePassword.php');
   require_once('newProduct.php');
   ?>
