@@ -17,9 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $confirm_password = $_POST['confirm_password'];
 
     if ($user->changePassword($username, $current_password, $new_password, $confirm_password)) {
+        header("Location: ../../painel/index.php");
         echo "Senha alterada com sucesso!";
     } else {
         echo "Ocorreu um erro ao alterar a senha. Por favor, tente novamente.";
     }
 }
-?>

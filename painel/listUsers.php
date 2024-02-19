@@ -61,10 +61,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             echo "<td class='border-b border-r text-center p-1'>";
             echo "<div class='flex justify-around'>";
             if ($isYou) {
-              echo "<a class='border border-solid border-zinc-400 rounded p-1 bg-primary hover:bg-primary-alt float-left' title='Editar usuário' href='javascript:void(0)' onclick='openModalUser(" . $userData['id'] . ")'>";
+              echo "<a class='border border-solid border-zinc-400 rounded flex justify-center items-center w-8 h-8 bg-primary hover:bg-primary-alt float-left text-white' title='Editar usuário' href='javascript:void(0)' onclick='openModalUser(" . $userData['id'] . ")'>";
               echo "<i class='fa fa-edit'></i>";
               echo "</a>";
-              echo "<a class='border border-solid border-zinc-400 rounded p-1 bg-red-500 hover:bg-red-600' title='Apagar usuário' href='deleteUser.php?id=" . $userData['id'] . "' onclick='return confirmDelete()'>";
+              echo "<a class='border border-solid border-zinc-400 rounded flex justify-center items-center w-8 h-8 bg-red-500 hover:bg-red-600 text-white' title='Apagar usuário' href='deleteUser.php?id=" . $userData['id'] . "' onclick='return confirmDelete()'>";
               echo "<i class='fa fa-trash'></i>";
             } else {
               echo "<div class='text-zinc-400'>Ações indisponíveis</div>";
@@ -91,13 +91,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           <label for="edit_username" class="font-semibold">Login:</label>
           <input class="rounded px-4 py-3 border border-[#CAD1E1] border-solid placeholder:text-center" type="text" id="edit_username" name="username">
         </div>
-        <div class="flex flex-col gap-1">
-          <label for="edit_access_level" class="font-semibold">Acesso:</label>
-          <select class="rounded px-4 py-3 border border-[#CAD1E1] border-solid placeholder:text-center" id="edit_access_level" name="access_level">
-            <option value="1">Associado</option>
-            <option value="2">Admin</option>
-          </select>
-        </div>
         <div>
           <button type="submit" class="bg-primary hover:bg-primary-alt w-full transition-all delay-75 text-white rounded p-4 uppercase font-bold">Atualizar</button>
         </div>
@@ -120,13 +113,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           <label for="create_password" class="font-semibold">Login:</label>
           <input class="rounded px-4 py-3 border border-[#CAD1E1] border-solid placeholder:text-center" type="password" id="create_password" name="password">
         </div>
-        <div class="flex flex-col gap-1">
-          <label for="create_access_level" class="font-semibold">Acesso:</label>
-          <select class="rounded px-4 py-3 border border-[#CAD1E1] border-solid placeholder:text-center" id="create_access_level" name="access_level">
-            <option value="1">Associado</option>
-            <option value="2">Admin</option>
-          </select>
-        </div>
         <div>
           <button type="submit" class="bg-primary hover:bg-primary-alt w-full transition-all delay-75 text-white rounded p-4 uppercase font-bold">Cadastrar</button>
         </div>
@@ -140,7 +126,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
       var userData = getUserData(userId);
       document.getElementById('edit_user_id').value = userId;
       document.getElementById('edit_username').value = userData.username;
-      document.getElementById('edit_access_level').value = userData.access_level;
       document.getElementById('editUserModal').style.display = "block";
     }
 
@@ -153,7 +138,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     function openCreateUserModal() {
       // Limpa os campos da modal de edição
       document.getElementById('create_username').value = "";
-      document.getElementById('create_access_level').value = "1";
       // Exibe a modal de criação
       document.getElementById('createUserModal').style.display = "block";
     }
@@ -182,7 +166,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             // Preenche os campos do formulário com os dados do usuário
             document.getElementById('edit_user_id').value = userId;
             document.getElementById('edit_username').value = response.username;
-            document.getElementById('edit_access_level').value = response.access_level;
             // Exibe a modal de edição
             document.getElementById('editUserModal').style.display = "block";
           }

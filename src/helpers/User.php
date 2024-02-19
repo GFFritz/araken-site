@@ -119,10 +119,10 @@ class User
         return $result->fetch_assoc();
     }
 
-    public function updateUser($userId, $username, $accessLevel)
+    public function updateUser($userId, $username)
     {
-        $stmt = $this->db->conn->prepare("UPDATE users SET username = ?, access_level = ? WHERE id = ?");
-        $stmt->bind_param("sii", $username, $accessLevel, $userId);
+        $stmt = $this->db->conn->prepare("UPDATE users SET username = ? WHERE id = ?");
+        $stmt->bind_param("si", $username, $userId);
         return $stmt->execute();
     }
 
@@ -135,13 +135,13 @@ class User
         return $result->fetch_assoc();
     }
 
-    public function createUser($username, $password, $accessLevel)
+    public function createUser($username, $password)
     {
         // Hash da senha
         $hashed_password = md5($password);
 
-        $stmt = $this->db->conn->prepare("INSERT INTO users (username, password, access_level) VALUES (?, ?, ?)");
-        $stmt->bind_param("ssi", $username, $hashed_password, $accessLevel);
+        $stmt = $this->db->conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+        $stmt->bind_param("ss", $username, $hashed_password);
         return $stmt->execute();
     }
 

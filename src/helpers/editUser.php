@@ -13,13 +13,11 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_id = $_POST['user_id'];
     $username = $_POST['username'];
-    $access_level = $_POST['access_level'];
 
-    if ($user->updateUser($user_id, $username, $access_level)) {
+    if ($user->updateUser($user_id, $username)) {
         echo "Usuário atualizado com sucesso!";
         header("Location: painel/listUsers.php");
     } else {
         echo "Ocorreu um erro ao atualizar o usuário. Por favor, tente novamente.";
     }
 }
-?>

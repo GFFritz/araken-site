@@ -16,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Coleta os dados do formulário
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $accessLevel = $_POST['access_level'];
 
     // Validação básica
     if (empty($username) || empty($password)) {
@@ -31,11 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Cria o usuário
-    if ($user->createUser($username, $password, $accessLevel)) {
+    if ($user->createUser($username, $password)) {
         echo "Usuário criado com sucesso!";
         header("Location: ../../painel/listUsers.php");
     } else {
         echo "Ocorreu um erro ao criar o usuário. Por favor, tente novamente.";
     }
 }
-?>
