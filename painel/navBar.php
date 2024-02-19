@@ -67,9 +67,7 @@ require_once('updateDocument.php');
     document.getElementById('editconfigModal').style.display = "none";
   }
 
-  // Burger menus
   document.addEventListener('DOMContentLoaded', function() {
-    // open
     const burger = document.querySelectorAll('.navbar-burger');
     const menu = document.querySelectorAll('.navbar-menu');
 
@@ -83,7 +81,6 @@ require_once('updateDocument.php');
       }
     }
 
-    // close
     const close = document.querySelectorAll('.navbar-close');
     const backdrop = document.querySelectorAll('.navbar-backdrop');
 

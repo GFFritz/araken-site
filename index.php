@@ -72,7 +72,7 @@
     <script>
       document.addEventListener("alpine:init", () => {
         Alpine.data("imageSlider", () => ({
-          currentIndex: 0, // Inicialize com 0
+          currentIndex: 0,
           images: [],
           async fetchImages() {
             const response = await fetch('src/helpers/fetchImages.php');
@@ -91,7 +91,6 @@
   </div>
 </main>
 <script>
-  // Estilizando a saída no console
   console.log('%cDesenvolvido por Gabriel Fritz:', 'color: #4755ed; font-size: 20px; font-weight: bold;', 'https://github.com/GFFritz');
 </script>
 

@@ -26,7 +26,6 @@
   </div>
 </div>
 
-
 <script type="text/javascript">
   window.openModalPassword = function(modalId) {
     document.getElementById(modalId).style.display = 'block'

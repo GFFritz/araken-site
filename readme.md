@@ -1,5 +1,5 @@
 # Araken web site by [Gabriel Fritz](https://github.com/GFFritz)
-## Landingpage developed using npm, Tailwindcss CLI and AlpineJS
+## web site developed using npm, Tailwindcss CLI and AlpineJS
 
 - UI Layout Designed by by Brendou Souza
 
