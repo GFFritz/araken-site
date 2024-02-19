@@ -16,7 +16,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GeoLaw</title>
+  <title>Painel - Araken Santos</title>
   <link rel="stylesheet" href='../assets/css/style.css'>
 
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.1/dist/cdn.min.js"></script>
@@ -62,7 +62,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             echo "<td class='border-b border-r text-center p-1'>";
             echo "<div class='flex justify-around'>";
             if ($isYou) {
-              echo "<a class='border border-solid border-zinc-400 rounded p-1 bg-[#006B94] hover:bg-[#006a94c9] float-left' title='Editar usuário' href='javascript:void(0)' onclick='openModal(" . $userData['id'] . ")'>";
+              echo "<a class='border border-solid border-zinc-400 rounded p-1 bg-[#006B94] hover:bg-[#006a94c9] float-left' title='Editar usuário' href='javascript:void(0)' onclick='openModalUser(" . $userData['id'] . ")'>";
               echo "<img class='h-[14px]' src='../assets/img/edit.svg' />";
               echo "</a>";
               echo "<a class='border border-solid border-zinc-400 rounded p-1 bg-red-500 hover:bg-red-600' title='Apagar usuário' href='deleteUser.php?id=" . $userData['id'] . "' onclick='return confirmDelete()'>";
@@ -84,7 +84,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <div class="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md p-5">
       <div class="flex justify-between items-center border-b border-[#CAD1E1]">
         <h2 class="text-lg font-medium">Editar Usuário</h2>
-        <span class="text-[#aaa] float-right text-[28px] font-bold hover:text-black hover:cursor-pointer" onclick="closeModal()">&times;</span>
+        <button class="text-[#aaa] float-right text-[28px] font-bold hover:text-black hover:cursor-pointer" onclick="closeModalLink()">&times;</button>
       </div>
       <form id="editUserForm" action="../src/helpers/editUser.php" method="post" class="flex flex-col gap-6 mt-6">
         <input class="rounded px-4 py-3 border border-[#CAD1E1] border-solid placeholder:text-center" type="hidden" id="edit_user_id" name="user_id">
@@ -137,7 +137,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
   <script>
     // Função para abrir a modal de edição de usuário
-    function openModal(userId) {
+    function openModalUser(userId) {
       var userData = getUserData(userId);
       document.getElementById('edit_user_id').value = userId;
       document.getElementById('edit_username').value = userData.username;
@@ -146,7 +146,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     }
 
     // Função para fechar a modal de edição de usuário
-    function closeModal() {
+    function closeModalLink() {
       document.getElementById('editUserModal').style.display = "none";
     }
 

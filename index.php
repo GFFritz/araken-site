@@ -46,9 +46,48 @@
   <div class="py-10 relative">
     <div class="absolute bg-primary w-full h-full top-0 z-0 blur-[6px]"></div>
     <div class="relative flex justify-center items-center mb-5 z-10">Principais Produtos</div>
-    <div class="relative container rounded-2xl bg-white z-10">
+    <!-- <div class="relative container rounded-2xl bg-white z-10">
       <img class="w-full px-0 mx-0" src="assets/img/product.png" alt="" srcset="">
+    </div> -->
+    <div class="grid container place-content-cente">
+      <div x-data="imageSlider" x-init="fetchImages()" class="relative mx-auto max-w-2xl overflow-hidden rounded-3xl">
+        <button @click="previous()" class="absolute left-5 bottom-1 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-gray-100 shadow-md">
+          <i class="fas fa-chevron-left text-2xl font-bold text-gray-500"></i>
+        </button>
+
+        <button @click="forward()" class="absolute right-5 bottom-1 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-gray-100 shadow-md">
+          <i class="fas fa-chevron-right text-2xl font-bold text-gray-500"></i>
+        </button>
+
+        <div class="relative h-80 object-contain" style="width: 400px">
+          <template x-for="(image, index) in images" :key="index">
+            <a :href="image.url" x-show="currentIndex === index" x-transition:enter="transition transform duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition transform duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute inset-0 flex items-center justify-center rounded-3xl w-full">
+              <img :src="image.file_path" :alt="image.file_path" class=" object-contain rounded-3xl" />
+            </a>
+          </template>
+        </div>
+      </div>
     </div>
+
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.data("imageSlider", () => ({
+          currentIndex: 0, // Inicialize com 0
+          images: [],
+          async fetchImages() {
+            const response = await fetch('src/helpers/fetchImages.php');
+            this.images = await response.json();
+          },
+          previous() {
+            this.currentIndex = this.currentIndex === 0 ? this.images.length - 1 : this.currentIndex - 1;
+          },
+          forward() {
+            this.currentIndex = this.currentIndex === this.images.length - 1 ? 0 : this.currentIndex + 1;
+          },
+        }));
+      });
+    </script>
+
   </div>
 </main>
 

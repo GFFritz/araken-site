@@ -7,3 +7,19 @@
     @apply flex justify-center text-2xl leading-6 items-center py-3 w-full  transition-all delay-100 rounded-full 
   }
 }
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Defina a largura máxima do carousel */
+  margin: 0 auto;
+  overflow: hidden;
+}
+.carousel-slide {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.carousel-item {
+  flex: 0 0 auto;
+  width: 100%;
+}

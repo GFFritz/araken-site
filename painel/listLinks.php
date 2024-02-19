@@ -1,3 +1,10 @@
+<div class="flex gap-3 justify-between px-4 container">
+  <h1 class="font-semibold text-lg">Links:</h1>
+  <button class="bg-emerald-600 hover:bg-emerald-500 text-zinc-50 flex gap-3 justify-center items-center w-fit rounded px-6 py-1" onclick="openModalNewLink('modelNewLink')">
+    <i class="fa fa-plus"></i>
+    <span>Adicionar novo link</span>
+  </button>
+</div>
 <div class="inline-block rounded-lg border shadow-md w-full my-4">
   <table class="table-auto w-full py-4">
     <tr>
@@ -21,7 +28,7 @@
         echo "<td class='border-b border-r text-center p-1'>" . $row['name'] . "</td>";
         echo "<td class='border-b border-r text-center p-1'>" . $row['url'] . "</td>";
         echo "<td class='border-b border-r text-center p-1 flex justify-around gap-1'>";
-        echo "<a class='border border-solid border-zinc-400 rounded w-6 h-6 bg-yellow-500 hover:bg-yellow-400 float-left text-white text-xs flex justify-center items-center cursor-pointer' title='Editar Link'><i class='fa fa-edit' href='javascript:void(0)' onclick='openModal(" . $row['id'] . ")'></i></a>";
+        echo "<a class='border border-solid border-zinc-400 rounded w-6 h-6 bg-yellow-500 hover:bg-yellow-400 float-left text-white text-xs flex justify-center items-center cursor-pointer' title='Editar Link'><i class='fa fa-edit' href='javascript:void(0)' onclick='openModalLink(" . $row['id'] . ")'></i></a>";
         echo "<a class='border border-solid border-zinc-400 rounded w-6 h-6 bg-red-600 hover:bg-red-500 float-left text-white text-xs flex justify-center items-center cursor-pointer' title='Remover Link' href='deleteLink.php?id=" . $row['id'] . "' onclick='return confirmDelete()'><i class='fa fa-trash'></i></a>";
         echo "</td>";
         echo "</tr>";
@@ -37,7 +44,7 @@
     <div class="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md p-5">
       <div class="flex justify-between items-center border-b border-[#CAD1E1]">
         <h2 class="text-lg font-medium">Editar Link</h2>
-        <span class="text-[#aaa] float-right text-[28px] font-bold hover:text-black hover:cursor-pointer" onclick="closeModal()">&times;</span>
+        <button class="text-[#aaa] float-right text-[28px] font-bold hover:text-black hover:cursor-pointer" onclick="closeModalLink()">&times;</button>
       </div>
       <form id="editLinkForm" action="../src/helpers/editLink.php" method="post" class="flex flex-col gap-6 mt-6">
         <input class="rounded px-4 py-3 border border-[#CAD1E1] border-solid placeholder:text-center" type="hidden" id="edit_link_id" name="edit_link_id">
@@ -58,7 +65,7 @@
 
 <script>
   // Função para abrir a modal de edição de usuário
-  function openModal(linkId) {
+  function openModalLink(linkId) {
     var linkData = getLinkData(linkId);
     document.getElementById('edit_link_id').value = linkId;
     document.getElementById('edit_name').value = linkData.name;
@@ -67,7 +74,7 @@
   }
 
   // Função para fechar a modal de edição de usuário
-  function closeModal() {
+  function closeModalLink() {
     document.getElementById('editLinkModal').style.display = "none";
   }
 
