@@ -16,7 +16,7 @@
     <img src="/assets/img/bg-header.png" class="opacity-0 w-full">
     <div class="flex flex-col items-center justify-center text-center absolute w-1/3 top-28 left-16 gap-3">
       <span>CEO na T+ Saúde e Micro Franqueado Acqualive</span>
-      <a class="transition-all delay-100 px-5 py-2 rounded-full text-sm w-fit relative group" href="<?php echo CONTACT_LINK; ?>">
+      <a class="transition-all delay-100 px-5 py-2 rounded-full text-sm w-fit relative group" href="/public/documents/contato-araken.pdf" download>
         <div class="absolute w-full h-full blur-[3px] bg-primary group-hover:bg-primary-alt shadow-button right-0 top-0 rounded-full z-0"></div>
         <span class="z-10 relative">Adicionar Contato</span>
       </a>
